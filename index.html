@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una sorpresa para ti ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <!-- Decoración de fondo -->
+    <div class="background-glow"></div>
+    <div class="floating-flower flower-one">🌸</div>
+    <div class="floating-flower flower-two">🌷</div>
+    <div class="floating-flower flower-three">🌸</div>
+    <div class="floating-flower flower-four">🌼</div>
+
+    <main class="page">
+
+        <!-- PANTALLA INICIAL -->
+        <section id="welcome-screen" class="screen">
+            <div class="welcome-card">
+                <div class="small-flowers">🌷 🌸 🌷</div>
+
+                <p class="subtitle">Tengo algo especial para ti</p>
+
+                <h1>Una pequeña sorpresa 💗</h1>
+
+                <p class="welcome-text">Pero antes responderás algunas preguntas ❤️</p>
+
+                <button id="start-btn" type="button">
+                    Presione si estas lista 💕
+                </button>
+
+            
+            </div>
+        </section>
+
+<!-- ANIMACIÓN DE CORAZONES AL PRESIONAR EL BOTÓN -->
+<section id="heart-intro" class="screen hidden">
+    <div id="intro-hearts" aria-hidden="true"></div>
+</section>
+ <!-- PANTALLA DE LAS CUATRO PREGUNTAS -->
+        <section id="questions-screen" class="screen hidden">
+            <div class="questions-card">
+
+                <p class="questions-subtitle">
+    Preguntas de cuánto me conoces y conoces lo que hicimos juntos, cariño 💗
+</p>
+
+                <p id="question-counter">Pregunta 1 de 4</p>
+
+                <h2 id="question-text">
+                    ¿Cuál es la flor favorita de Juan?
+                </h2>
+
+                <div class="answer-buttons">
+                    <button id="answer-one" type="button"></button>
+                    <button id="answer-two" type="button"></button>
+                </div>
+
+                <p id="answer-feedback" aria-live="polite"></p>
+
+            </div>
+        </section>
+        <!-- PANTALLA DEL MENSAJE -->
+        <section id="message-screen" class="screen hidden">
+            <div class="message-card">
+                <div class="card-flower">🌸</div>
+
+                <h2>Quiero decirte algo...</h2>
+
+                <p id="typed-message" aria-live="polite"></p>
+
+                <span class="typing-cursor" aria-hidden="true">|</span>
+            </div>
+        </section>
+
+        <!-- SORPRESA FINAL CON LA FOTO -->
+        <section id="photo-screen" class="screen hidden">
+            <div class="photo-card">
+
+                <p class="photo-heading">
+    Una linda foto juntos, cariño 💗
+</p>
+
+                <div class="photo-frame">
+                   <img
+    id="final-photo"
+    src="Foto/foto-ademis.png"
+    alt="Una foto especial"
+>
+                </div>
+
+                <h2 class="final-message">
+    Te amo mucho ❤️
+</h2>
+
+                <p class="photo-caption">
+                    Eres una personita muy especial para mi ✨
+                </p>
+
+            </div>
+
+            <div id="heart-container" aria-hidden="true"></div>
+            <div id="sparkle-container" aria-hidden="true"></div>
+        </section>
+
+    </main>
+ <!-- Música de fondo -->
+<audio id="bg-music" loop preload="auto">
+    <source src="musica/yung kai - blue (official music video).mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>

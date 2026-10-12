@@ -1,0 +1,700 @@
+/* ===== DISEÑO GENERAL ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #f6a8c8;
+    --dark-pink: #d85b91;
+    --soft-pink: #fff0f6;
+    --text: #7b3658;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(ellipse at 15% 20%,
+            #ffe2ee 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 80%,
+            #f7d5ec 0%, transparent 45%),
+        linear-gradient(135deg, #fff8fb, #ffeaf3, #fff4fa);
+    overflow-x: hidden;
+}
+
+/* Luces suaves de fondo */
+
+.background-glow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 20% 35%,
+            rgba(255, 255, 255, 0.8), transparent 18%),
+        radial-gradient(circle at 80% 25%,
+            rgba(255, 190, 220, 0.4), transparent 22%);
+    animation: glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { opacity: 0.55; }
+    to { opacity: 1; }
+}
+
+/* Flores decorativas */
+
+.floating-flower {
+    position: fixed;
+    z-index: 0;
+    opacity: 0.65;
+    pointer-events: none;
+    animation: float-flower 6s ease-in-out infinite;
+}
+
+.flower-one {
+    top: 8%;
+    left: 8%;
+    font-size: 42px;
+}
+
+.flower-two {
+    top: 18%;
+    right: 8%;
+    font-size: 38px;
+    animation-delay: 1s;
+}
+
+.flower-three {
+    bottom: 12%;
+    left: 12%;
+    font-size: 36px;
+    animation-delay: 2s;
+}
+
+.flower-four {
+    bottom: 9%;
+    right: 12%;
+    font-size: 40px;
+    animation-delay: 1.5s;
+}
+
+@keyframes float-flower {
+    0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-16px) rotate(8deg);
+    }
+}
+
+/* ===== PANTALLAS ===== */
+
+.page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+}
+
+.screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 18px;
+    animation: screen-in 0.8s ease both;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes screen-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== BIENVENIDA ===== */
+
+.welcome-card,
+.message-card,
+.photo-card {
+    width: min(100%, 650px);
+    padding: 38px 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: 0 15px 50px rgba(192, 99, 143, 0.16);
+    backdrop-filter: blur(10px);
+}
+
+.small-flowers {
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.subtitle {
+    color: var(--dark-pink);
+    letter-spacing: 2px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: clamp(28px, 6vw, 44px);
+    line-height: 1.2;
+    margin: 16px 0;
+    color: #b94d7e;
+}
+
+.welcome-text {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #86546b;
+}
+
+button {
+    margin-top: 24px;
+    padding: 16px 28px;
+    min-height: 52px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f5a5c7, #df6fa2);
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(216, 91, 145, 0.25);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(216, 91, 145, 0.35);
+}
+
+button:focus-visible {
+    outline: 3px solid #9b3f6c;
+    outline-offset: 4px;
+}
+
+.signature {
+    margin-top: 28px;
+    font-size: 13px;
+    color: #b17b96;
+}
+
+/* ===== MENSAJE ===== */
+
+.message-card {
+    width: min(100%, 760px);
+    padding: 42px 34px;
+}
+
+.card-flower {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.message-card h2 {
+    color: #bd5686;
+    font-size: clamp(24px, 5vw, 34px);
+    margin-bottom: 28px;
+}
+
+#typed-message {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    text-align: left;
+    font-size: 17px;
+    line-height: 2;
+    color: #70445a;
+    min-height: 80px;
+}
+
+.typing-cursor {
+    display: inline-block;
+    color: #dc6c9d;
+    font-weight: bold;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* ===== FOTO FINAL ===== */
+
+.photo-card {
+    width: min(100%, 560px);
+    position: relative;
+    z-index: 2;
+    animation: photo-reveal 1.4s ease both;
+}
+
+@keyframes photo-reveal {
+    from {
+        opacity: 0;
+        transform: scale(0.86);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.photo-heading {
+    font-size: 21px;
+    font-weight: 700;
+    color: #b94d7e;
+}
+
+.photo-frame {
+    width: min(100%, 360px);
+    margin: 24px auto;
+    padding: 10px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #ffd9e9, #fff, #f5b6d0);
+    box-shadow: 0 0 25px rgba(239, 139, 185, 0.45);
+    animation: photo-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes photo-glow {
+    from {
+        box-shadow: 0 0 18px rgba(239, 139, 185, 0.3);
+    }
+    to {
+        box-shadow: 0 0 36px rgba(239, 139, 185, 0.7);
+    }
+}
+
+#final-photo {
+    display: block;
+    width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.final-message {
+    color: #c34e83;
+    font-size: clamp(24px, 5vw, 32px);
+}
+
+.photo-caption {
+    color: #98647d;
+    font-size: 16px;
+}
+
+/* Corazones y destellos */
+
+#heart-container,
+#sparkle-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+#heart-container {
+    z-index: 3;
+}
+
+#sparkle-container {
+    z-index: 4;
+}
+
+.heart {
+    position: absolute;
+    bottom: -35px;
+    animation: heart-rise var(--duration, 5s) linear forwards;
+    filter: drop-shadow(0 0 6px rgba(255, 125, 180, 0.5));
+}
+
+@keyframes heart-rise {
+    0% {
+        transform: translateY(0) rotate(0) scale(0.7);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    100% {
+        transform: translateY(-105vh) rotate(35deg) scale(1.3);
+        opacity: 0;
+    }
+}
+
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 8px 3px #ffc1dc;
+    animation: sparkle 1.8s ease-in-out infinite alternate;
+}
+
+@keyframes sparkle {
+    from {
+        opacity: 0.2;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.6);
+    }
+}
+
+/* ===== CELULARES ===== */
+
+@media (max-width: 600px) {
+    .welcome-card,
+    .message-card,
+    .photo-card {
+        padding: 30px 21px;
+        border-radius: 22px;
+    }
+
+    .floating-flower {
+        font-size: 28px;
+    }
+
+    #typed-message {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .photo-frame {
+        width: min(100%, 300px);
+    }
+}
+
+/* Respeta la preferencia de reducir animaciones */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* ===== LLUVIA DE CORAZONES INICIAL ===== */
+
+#heart-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    overflow: hidden;
+    background: radial-gradient(
+        circle,
+        #ffe5f0 0%,
+        #ffc5df 55%,
+        #f7a6cc 100%
+    );
+}
+
+#intro-hearts {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.intro-heart {
+    position: absolute;
+    top: -60px;
+    animation: intro-heart-fall var(--fall-time, 3s) ease-in forwards;
+    will-change: transform, opacity;
+    filter: drop-shadow(0 3px 7px rgba(211, 62, 131, 0.2));
+}
+
+@keyframes intro-heart-fall {
+    0% {
+        transform: translateY(-10vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    85% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(115vh) rotate(400deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+.heart-intro-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #b83270;
+    font-size: clamp(24px, 5vw, 42px);
+    font-weight: bold;
+    text-shadow: 0 2px 15px white;
+    animation: intro-text-appear 1s ease both;
+    pointer-events: none;
+}
+
+@keyframes intro-text-appear {
+    from {
+        opacity: 0;
+        transform: translateY(-40%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+.welcome-text {
+    color: #ff69b4;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 12px 0 22px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.65);
+}
+#welcome-screen h1 {
+    color: #ff4fa3;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    text-align: center;
+    text-shadow:
+        0 0 5px rgba(255, 79, 163, 0.8),
+        0 0 15px rgba(255, 79, 163, 0.6),
+        0 0 30px rgba(255, 20, 147, 0.4);
+    margin-bottom: 16px;
+}
+/* =====================================
+   PANTALLA DE PREGUNTAS INTERACTIVAS
+   ===================================== */
+
+.questions-card {
+    width: min(90%, 600px);
+    padding: 32px 24px;
+    margin: 20px auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 105, 180, 0.5);
+    border-radius: 24px;
+    box-shadow:
+        0 0 20px rgba(255, 79, 163, 0.25),
+        0 0 45px rgba(255, 20, 147, 0.12);
+    backdrop-filter: blur(12px);
+}
+
+.questions-subtitle {
+    color: #ff80bd;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#question-counter {
+    color: #ffd6e9;
+    font-size: 14px;
+    margin: 22px 0 12px;
+}
+
+#question-text {
+    color: #ffffff;
+    font-size: clamp(24px, 5vw, 34px);
+    line-height: 1.35;
+    text-shadow: 0 0 12px rgba(255, 79, 163, 0.45);
+    margin-bottom: 28px;
+}
+
+.answer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.answer-buttons button {
+    width: 100%;
+    padding: 16px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    background: linear-gradient(135deg, #ff4fa3, #c026d3);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.answer-buttons button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 22px rgba(255, 79, 163, 0.5);
+}
+
+.answer-buttons button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+#answer-feedback {
+    min-height: 28px;
+    margin-top: 20px;
+    color: #ffb6d9;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .questions-card {
+        padding: 26px 18px;
+    }
+
+    .answer-buttons button {
+        font-size: 16px;
+        padding: 15px 12px;
+    }
+}
+/* ===== ADAPTACIÓN PARA TABLETS ===== */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .screen {
+        padding: 28px 24px;
+    }
+
+    .welcome-card,
+    .message-card,
+    .photo-card,
+    .questions-card {
+        width: 100%;
+        max-width: 720px;
+        padding: 32px 26px;
+    }
+
+    #typed-message {
+        font-size: 18px;
+        line-height: 1.9;
+    }
+
+    #question-text {
+        font-size: 30px;
+        line-height: 1.4;
+    }
+
+    .answer-buttons button {
+        min-height: 52px;
+        padding: 16px 20px;
+        font-size: 18px;
+    }
+
+    .photo-frame {
+        width: min(100%, 380px);
+    }
+
+    #final-photo {
+        max-height: 60vh;
+        object-fit: contain;
+    }
+}
+/* ===== MEJORAS PARA CELULARES ===== */
+
+@media (max-width: 600px) {
+
+    .screen {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 20px 12px;
+        align-items: center;
+    }
+
+    .welcome-card,
+    .message-card,
+    .photo-card,
+    .questions-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 24px 16px;
+        margin: 0 auto;
+        border-radius: 22px;
+    }
+
+    .questions-subtitle {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    #question-text {
+        font-size: 24px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+    }
+
+    .answer-buttons button {
+        min-height: 50px;
+        padding: 14px 10px;
+        font-size: 16px;
+        line-height: 1.4;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .message-card h2 {
+        font-size: 25px;
+        line-height: 1.4;
+        margin-bottom: 20px;
+    }
+
+    #typed-message {
+        font-size: 16px;
+        line-height: 1.8;
+        text-align: left;
+        overflow-wrap: anywhere;
+    }
+
+    .photo-heading {
+        font-size: 19px;
+        line-height: 1.5;
+    }
+
+    .photo-frame {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    #final-photo {
+        width: 100%;
+        max-height: 50vh;
+        max-height: 50dvh;
+        object-fit: contain;
+    }
+
+    .final-message {
+        font-size: 28px;
+        line-height: 1.4;
+    }
+
+    .photo-caption {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    button:hover {
+        transform: none;
+    }
+}
